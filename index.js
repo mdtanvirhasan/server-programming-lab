@@ -1,6 +1,8 @@
 const express=require("express")
 const app=express()
-//const app=require(app)
+require('./helpers/init_mongodb')
+
+const AuthRoute=require('./Routes/auth.route')
 
 const p=7777
 
@@ -12,10 +14,14 @@ app.get("/",(req,res)=>{
     res.sendFile("landingpage.html",{root:"./views"});
 });
 
-app.get("/register",(req,res)=>{
-    res.sendFile("register.html",{root:"./views"});
-});
+app.use("/",AuthRoute)
 
-app.get("/login",(req,res)=>{
-    res.sendFile("login.html",{root:"./views"});
-});
+
+
+//app.get("/register",(req,res)=>{
+//    res.sendFile("register.html",{root:"./views"});
+//});
+
+//app.get("/login",(req,res)=>{
+//    res.sendFile("login.html",{root:"./views"});
+//});
