@@ -1,10 +1,11 @@
+require('dotenv').config()
 const express=require("express")
 const app=express()
 require('./helpers/init_mongodb')
 
 const AuthRoute=require('./Routes/auth.route')
 
-const p=7777
+const p=process.env.PORT
 
 app.listen(p,()=>{
     console.log(`listening at port ${p}`)
